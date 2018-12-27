@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Product = require('../models/product');
 
-exports.get_products = (res, req, next) => {
+exports.get_products = (req, res, next) => {
     Product.find()
         .select('name price _id productImage')
         .exec()
@@ -23,7 +23,7 @@ exports.get_products = (res, req, next) => {
         });
 };
 
-exports.add_products = (res, req, next) => {
+exports.add_products = (req, res, next) => {
     const product = new Product({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
